@@ -1,12 +1,11 @@
 package com.fat_fire_face.taskmanager;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 public class Author {
@@ -23,6 +22,9 @@ public class Author {
    @Email(message = "адрес электронной почты должен содержать локальное имя, символ @ и доменное имя. Например, user123!@example.com")
     private String username;
     private String password;
+
+    @OneToMany(mappedBy = "author")
+    private List<Task> tasks;
 
     public Author(String username, String password){
         this.username = username;
@@ -51,5 +53,9 @@ public class Author {
 
     public void setPassword(String password){
         this.password = password;
+    }
+
+    public List<Task> getAllAuthorTasks(){
+        return tasks;
     }
 }

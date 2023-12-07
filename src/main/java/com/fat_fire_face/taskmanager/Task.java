@@ -14,6 +14,7 @@ public class Task {
     private String priority;
     private String assignee;
 
+
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
