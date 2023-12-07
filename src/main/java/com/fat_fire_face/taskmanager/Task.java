@@ -63,7 +63,6 @@ public class Task {
         public void setPriority(String priority){
             this.priority = priority;
         }
-        //изменить стринговое имя автора на класс Author, связав с id, количеством задач и валидацией
         public void setAuthor(Author author){
             this.author = author;
         }
