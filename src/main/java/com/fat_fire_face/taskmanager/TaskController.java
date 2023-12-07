@@ -5,12 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
     @Autowired
     private TaskService taskService;
+
+    @Autowired
+    private AuthorService authorService;
 
     @Operation(summary = "Получить список всех задач")
     @GetMapping
@@ -36,6 +40,7 @@ public class TaskController {
         Author author = authorService.getAuthorById(authorId);
         if (author != null) {
         return taskService.createTask(task, author);}
+    else return null;
     }
 
     @Operation(summary = "Удаляет задачу под выбранным ID")
