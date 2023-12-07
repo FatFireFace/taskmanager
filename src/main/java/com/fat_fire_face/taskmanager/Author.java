@@ -21,6 +21,8 @@ public class Author {
    @Size(min = EMAIL_MIN_LENGTH, max = EMAIL_MAX_LENGTH, message = "адрес электорнной почты должен содержать от 3 до 320 символов")
    @Email(message = "адрес электронной почты должен содержать локальное имя, символ @ и доменное имя. Например, user123!@example.com")
     private String username;
+
+    @NotBlank(message = "поле не может быть пустым")
     private String password;
 
     @OneToMany(mappedBy = "author")
